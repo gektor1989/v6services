@@ -27,14 +27,20 @@ public class LineCounter {
         return writeToFile(sortedSrc, TEXT_OUT);
     }
 
-    private static boolean sortByWord(String filePath) {
-        return false;
+    private static boolean sortByWord(String filePath, int word) {
+        String src = readFile(filePath);
+        Map<String, String> srcMapWithSortingWords = stringToMapWithSortingWords(src, word);
+        Map<String, Integer> srcMapWithDuplicates = stringToHashMapWithDuplicatesLineQuantity(src);
+        List<String> sortedByWords = sortByWords(srcMapWithSortingWords);
+        Map<String, Integer> sortedSrc = sortMapByWords(srcMapWithSortingWords, srcMapWithDuplicates, sortedByWords);
+        return writeToFile(sortedSrc, TEXT_OUT);
     }
 
 
     public static void main(String[] args) {
-//        System.out.println(sortByAlphabet(TEXT_SRC));
-        sortByLineCharQuantity(TEXT_SRC);
+        System.out.println(sortByAlphabet(TEXT_SRC));
+        System.out.println(sortByLineCharQuantity(TEXT_SRC));
+        System.out.println(sortByWord(TEXT_SRC, 1));
     }
 
 }
