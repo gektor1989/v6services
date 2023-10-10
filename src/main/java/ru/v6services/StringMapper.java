@@ -28,6 +28,17 @@ public class StringMapper {
         return sortedSrc;
     }
 
+    public static Map<String, String> stringToMapWithSortingWords(String src, int word) {
+        Map<String, String> sortedSrc = new HashMap<>();
+        try (Scanner scanner = new Scanner(src)) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                sortedSrc.put(line, line.split(" ")[word]);
+            }
+        }
+        return sortedSrc;
+    }
+
     private static Map<String, Integer> getSrcMap(String src, Map<String, Integer> sortedSrc) {
         try (Scanner scanner = new Scanner(src)) {
             while (scanner.hasNext()) {
