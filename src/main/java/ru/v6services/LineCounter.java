@@ -8,11 +8,23 @@ import static ru.v6services.Sorter.*;
 import static ru.v6services.Validator.validateFilePath;
 import static ru.v6services.Validator.validateWordPosition;
 
+/**
+ * LineCounter
+ *
+ * @author vlsolovev@gmail.com
+ * @version 1.0.0
+ */
 public class LineCounter {
 
     private static final String TEXT_SRC = "src\\main\\resources\\src.txt";
     private static final String TEXT_OUT = "src\\main\\resources\\out.txt";
 
+    /**
+     * Method for sorting text file in alphabet order (sorting unit is line)
+     *
+     * @param filePath is path to file + file name
+     * @return true if sorting is Ok (and in this case soring text is sent to out.txt), false if sorting canceled
+     */
     public static boolean sortByAlphabet(String filePath) {
         if (!validateFilePath(filePath)) {
             return false;
@@ -22,6 +34,12 @@ public class LineCounter {
         return writeToFile(sortedSrc, TEXT_OUT);
     }
 
+    /**
+     * Method for sorting text file by line character quantity (sorting unit is line)
+     *
+     * @param filePath is path to file + file name
+     * @return true if sorting is Ok (and in this case soring text is sent to out.txt), false if sorting canceled
+     */
     public static boolean sortByLineCharQuantity(String filePath) {
         if (!validateFilePath(filePath)) {
             return false;
@@ -34,6 +52,13 @@ public class LineCounter {
         return writeToFile(sortedSrc, TEXT_OUT);
     }
 
+    /**
+     * Method for sorting text file by certain word in parameter (sorting unit is line)
+     *
+     * @param filePath is path to file + file name
+     * @param wordPosition word position in lines
+     * @return true if sorting is Ok (and in this case soring text is sent to out.txt), false if sorting canceled
+     */
     public static boolean sortByWord(String filePath, int wordPosition) {
         if (!validateFilePath(filePath)) {
             return false;
@@ -52,9 +77,9 @@ public class LineCounter {
 
 
     public static void main(String[] args) {
-//        System.out.println(sortByAlphabet(TEXT_SRC));
+        System.out.println(sortByAlphabet(TEXT_SRC));
 //        System.out.println(sortByLineCharQuantity(TEXT_SRC));
-        System.out.println(sortByWord(TEXT_SRC, 1));
+//        System.out.println(sortByWord(TEXT_SRC, 1));
     }
 
 }
